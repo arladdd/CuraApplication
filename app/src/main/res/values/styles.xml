@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Tema dasar aplikasi -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Mengatur warna yang akan digunakan oleh BottomNavigationView -->
+        <item name="colorPrimary">@android:color/black</item>
+        <item name="colorControlActivated">@android:color/black</item>  <!-- Mengatur warna ikon yang aktif -->
+        <item name="colorControlNormal">@android:color/darker_gray</item>  <!-- Mengatur warna ikon yang tidak aktif -->
+    </style>
+
+</resources>
