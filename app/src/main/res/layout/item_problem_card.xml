@@ -8,16 +8,12 @@
     android:layout_marginTop="12dp"
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="24dp"
-    app:cardElevation="0dp"
-    android:clipToPadding="true"
-    android:clipChildren="true"
-    >
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/card_background"
-        >
+        android:background="@drawable/card_background">
 
         <FrameLayout
             android:id="@+id/imageContainer"
@@ -104,6 +100,7 @@
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
+                <!-- Price Text -->
                 <TextView
                     android:id="@+id/priceText"
                     android:layout_width="0dp"
@@ -115,17 +112,36 @@
                     android:textSize="14sp"
                     tools:text="Rp696.969.696" />
 
-                <TextView
-                    android:id="@+id/viewCount"
+                <!-- LinearLayout for Icon People and View Count -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_people"
-                    android:drawablePadding="4dp"
-                    android:textColor="#666666"
-                    android:textSize="12sp"
-                    tools:text="27/50" />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
 
+                    <!-- Icon People -->
+                    <ImageView
+                        android:id="@+id/iconPeople"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_people"
+                         />
+
+                    <!-- Text 27/50 -->
+                    <TextView
+                        android:id="@+id/viewCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_tight"
+                        tools:text="27/50" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout> <!-- This closes the ConstraintLayout -->
+</androidx.cardview.widget.CardView> <!-- This closes the CardView -->

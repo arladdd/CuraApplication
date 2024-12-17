@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="backer_image_size">50dp</dimen>
+    <dimen name="backer_image_overlap">8dp</dimen>
+    <dimen name="backer_image_border">2dp</dimen>
+</resources>

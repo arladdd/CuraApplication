@@ -11,7 +11,7 @@ import java.text.NumberFormat
 import java.util.Locale
 
 class ProblemAdapter(
-    private val problems: List<ProblemItem>,
+    private var problems: List<ProblemItem>,
     private val onItemClick: (ProblemItem) -> Unit
 ) : RecyclerView.Adapter<ProblemAdapter.ProblemViewHolder>() {
 
@@ -28,6 +28,11 @@ class ProblemAdapter(
     }
 
     override fun getItemCount() = problems.size
+
+    fun updateProblems(newProblems: List<ProblemItem>) {
+        problems = newProblems
+        notifyDataSetChanged()
+    }
 
     class ProblemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageView: ImageView = itemView.findViewById(R.id.problemImage)

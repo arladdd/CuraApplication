@@ -1,13 +1,16 @@
 package project.CuraApp
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.google.android.material.button.MaterialButton
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.NumberFormat
 import java.util.Locale
@@ -15,16 +18,23 @@ import java.util.Locale
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var problemImage: ImageView
-    private lateinit var priceText: TextView
-    private lateinit var targetText: TextView
-    private lateinit var progressBar: android.widget.ProgressBar
+    private lateinit var problemTitle: TextView
+    private lateinit var collectedAmount: TextView
+    private lateinit var collectedFromText: TextView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var participantCount: TextView
+    private lateinit var remainDays: TextView
     private lateinit var organizerImage: CircleImageView
     private lateinit var organizerName: TextView
-    private lateinit var verifiedBadge: TextView
+    private lateinit var organizerVerified: TextView
     private lateinit var backersContainer: LinearLayout
+    private lateinit var viewPeopleButton: Button
     private lateinit var storyText: TextView
-    private lateinit var bookmarkButton: MaterialButton
-    private lateinit var donateButton: MaterialButton
+    private lateinit var updatesText: TextView
+    private lateinit var useOfFundsText: TextView
+    private lateinit var contributeButton: Button
+    private lateinit var donateButton: Button
+    private var problemItem: ProblemItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +43,7 @@ class DetailActivity : AppCompatActivity() {
         // Setup toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // Initialize views
         initializeViews()
@@ -48,74 +57,104 @@ class DetailActivity : AppCompatActivity() {
 
     private fun initializeViews() {
         problemImage = findViewById(R.id.problemImage)
-        priceText = findViewById(R.id.priceText)
-        targetText = findViewById(R.id.targetText)
+        problemTitle = findViewById(R.id.problemTitle)
+        collectedAmount = findViewById(R.id.collectedAmount)
+        collectedFromText = findViewById(R.id.collectedFromText)
         progressBar = findViewById(R.id.progressBar)
+        participantCount = findViewById(R.id.participantCount)
+        remainDays = findViewById(R.id.remainDays)
         organizerImage = findViewById(R.id.organizerImage)
         organizerName = findViewById(R.id.organizerName)
-        verifiedBadge = findViewById(R.id.verifiedBadge)
+        organizerVerified = findViewById(R.id.organizerVerified)
         backersContainer = findViewById(R.id.backersContainer)
+        viewPeopleButton = findViewById(R.id.viewPeopleButton)
         storyText = findViewById(R.id.storyText)
-        bookmarkButton = findViewById(R.id.bookmarkButton)
+        updatesText = findViewById(R.id.updatesText)
+        useOfFundsText = findViewById(R.id.useOfFundsText)
+        contributeButton = findViewById(R.id.contributeButton)
         donateButton = findViewById(R.id.donateButton)
     }
 
     private fun loadProblemDetails() {
-        val problemItem = intent.getParcelableExtra<ProblemItem>("PROBLEM_ITEM")
+        problemItem = intent.getParcelableExtra("PROBLEM_ITEM")
 
         problemItem?.let { problem ->
             problemImage.setImageResource(problem.imageResourceId)
+            problemTitle.text = problem.title
 
             val numberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+            val collectedAmountFormatted = numberFormat.format(problem.price)
+            val targetAmountFormatted = numberFormat.format(problem.targetPrice)
 
-            priceText.text = numberFormat.format(problem.price)
-            targetText.text = "from ${numberFormat.format(problem.targetPrice)}"
+            collectedAmount.text = collectedAmountFormatted
+            collectedFromText.text = "Out of $targetAmountFormatted"
 
             progressBar.progress = problem.progress
 
+            participantCount.text = "${problem.currentViews}/${problem.maxViews}"
+            remainDays.text = "${problem.date} ${problem.month}"
+
             organizerImage.setImageResource(problem.organizerImageResourceId)
             organizerName.text = problem.maker
-            verifiedBadge.visibility = if (problem.isVerified) android.view.View.VISIBLE else android.view.View.GONE
+            organizerVerified.visibility = if (problem.isVerified) View.VISIBLE else View.GONE
 
             // Add backers
             addBackers(problem.backers)
 
             storyText.text = problem.story
+
+            // Set dummy text for updates and use of funds
+            updatesText.text = "No updates yet"
+            useOfFundsText.text = "Details about how the funds will be used will be posted here"
         }
     }
 
     private fun addBackers(backers: List<Int>) {
-        backersContainer.removeAllViews() // Clear existing views
-        backers.forEachIndexed { index, backerId ->
+        backersContainer.removeAllViews()
+        backers.take(5).forEachIndexed { index, backerId ->
             val backerImage = CircleImageView(this).apply {
                 layoutParams = LinearLayout.LayoutParams(
                     resources.getDimensionPixelSize(R.dimen.backer_image_size),
                     resources.getDimensionPixelSize(R.dimen.backer_image_size)
                 ).apply {
-                    marginStart = if (index > 0) resources.getDimensionPixelSize(R.dimen.backer_image_margin) else 0
+                    if (index > 0) {
+                        marginStart = -resources.getDimensionPixelSize(R.dimen.backer_image_overlap)
+                    }
                 }
                 setImageResource(backerId)
+                borderWidth = resources.getDimensionPixelSize(R.dimen.backer_image_border)
+                borderColor = getColor(android.R.color.white)
             }
             backersContainer.addView(backerImage)
         }
     }
 
     private fun setupButtons() {
-        bookmarkButton.setOnClickListener {
-            // Handle bookmark action
+        findViewById<ImageButton>(R.id.backButton).setOnClickListener {
+            onBackPressed()
+        }
+
+        findViewById<ImageButton>(R.id.mapButton).setOnClickListener {
+            // Handle map button click
+        }
+
+        viewPeopleButton.setOnClickListener {
+            // Handle view people button click
+        }
+
+        contributeButton.setOnClickListener {
+            val intent = Intent(this, ContributeActivity::class.java)
+            intent.putExtra("PROBLEM_ITEM", problemItem)
+            startActivity(intent)
         }
 
         donateButton.setOnClickListener {
-            // Handle donate action
+            val intent = Intent(this, DonateActivity::class.java)
+            problemItem?.let {
+                intent.putExtra("PROBLEM_ITEM", it)
+            }
+            startActivity(intent)
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
     }
 }
 
