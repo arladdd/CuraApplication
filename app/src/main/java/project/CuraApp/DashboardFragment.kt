@@ -98,6 +98,7 @@ class DashboardFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
+<<<<<<< HEAD
     private fun setupSearchBar() {
         searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -109,6 +110,22 @@ class DashboardFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {}
         })
     }
+=======
+//    private fun setupSearchView() {
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                // Handle search query submission
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                // Handle search query text changes
+//                return true
+//            }
+//        })
+//    }
+}
+>>>>>>> a2b53f8 (fiix)
 
     private fun filterProblems(query: String?) {
         if (query.isNullOrBlank()) {

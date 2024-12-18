@@ -169,5 +169,9 @@ class DetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> a2b53f8 (fiix)
