@@ -1,24 +1,26 @@
 package project.CuraApp
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
+import project.CuraApp.User
 
-@Parcelize
 data class ProblemItem(
-    val id: Int,
-    val imageResourceId: Int,
-    val date: String,
-    val month: String,
+    val id: String,
     val title: String,
-    val maker: String,
-    val isVerified: Boolean,
-    val price: Long,
-    val targetPrice: Long,
-    val currentViews: Int,
-    val maxViews: Int,
-    val progress: Int,
-    val organizerImageResourceId: Int,
-    val backers: List<Int>,
-    val story: String
-) : Parcelable
+    val imageUrl: String,
+    val donationNeeded: Double,
+    val volunteerNeeded: Int,
+    val donationReceived: Double,
+    val volunteerReceived: Int,
+    val user: User? = null
+):Serializable {
+
+    fun donationPercentage(): Int {
+        return if (donationNeeded > 0) {
+            ((donationReceived / donationNeeded) * 100).toInt()
+        } else {
+            0
+        }
+    }
+
+}
 
