@@ -207,50 +207,6 @@
                     />
             </RadioGroup>
 
-            <!-- Upload ID Card Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="Upload your ID Card"
-                android:fontFamily="@font/inter_tight_medium"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <FrameLayout
-                android:id="@+id/uploadContainer"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/upload_background"
-                android:clickable="true"
-                android:focusable="true">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_report" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/inter_tight"
-                        android:text="Click to upload"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-            </FrameLayout>
-
             <!-- Terms Checkbox -->
             <CheckBox
                 android:id="@+id/termsCheckbox"

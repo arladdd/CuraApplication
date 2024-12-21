@@ -22,13 +22,13 @@
         <!-- Profile Photo -->
         <ImageView
             android:id="@+id/profile_photo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/gibran"
+            android:src="@drawable/ic_default_profile"
             android:contentDescription="Profile Photo"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/rounded_photo"
+            android:background="@drawable/circular_shape"
             android:scaleType="centerCrop"/>
 
         <!-- Search Bar -->
