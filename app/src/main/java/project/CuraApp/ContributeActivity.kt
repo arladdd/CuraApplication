@@ -61,7 +61,6 @@ class ContributeActivity : AppCompatActivity() {
         phoneInput = findViewById(R.id.phoneInput)
         genderSpinner = findViewById(R.id.genderSpinner)
         ageRangeGroup = findViewById(R.id.ageRangeGroup)
-        uploadContainer = findViewById(R.id.uploadContainer)
         termsCheckbox = findViewById(R.id.termsCheckbox)
         contributeButton = findViewById(R.id.contributeButton)
     }
@@ -82,28 +81,11 @@ class ContributeActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        uploadContainer.setOnClickListener {
-            openImagePicker()
-        }
 
         contributeButton.setOnClickListener {
             if (validateForm()) {
                 submitForm()
             }
-        }
-    }
-
-    private fun openImagePicker() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-            selectedImageUri = data.data
-            // You might want to show a preview of the selected image
-            Toast.makeText(this, "ID Card uploaded successfully", Toast.LENGTH_SHORT).show()
         }
     }
 

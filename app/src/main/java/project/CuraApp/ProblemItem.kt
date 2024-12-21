@@ -19,6 +19,8 @@ data class ProblemItem(
     val progress: Int,
     val organizerImageResourceId: Int,
     val backers: List<Int>,
-    val story: String
+    val story: String,
+    var isCompleted: Boolean = false,
+    val activityPhotos: MutableList<String> = mutableListOf()
 ) : Parcelable
 
