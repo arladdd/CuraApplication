@@ -100,7 +100,7 @@ class DetailActivity : AppCompatActivity() {
             val targetAmountFormatted = numberFormat.format(problem.targetPrice)
 
             collectedAmount.text = collectedAmountFormatted
-            collectedFromText.text = "Out of $targetAmountFormatted"
+            collectedFromText.text = "From $targetAmountFormatted"
 
             progressBar.progress = problem.progress
 
