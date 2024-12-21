@@ -94,10 +94,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/inter_tight"
+                android:fontFamily="@font/inter_tight_medium"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 tools:text="Problem Title" />
 
             <!-- Money Collection Card -->
@@ -164,7 +163,7 @@
                 app:cardElevation="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:layout_marginTop="-20dp"
+                android:layout_marginTop="-24dp"
                 >
 
                 <LinearLayout
@@ -223,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:fontFamily="@font/inter_tight_semibold"
+                android:fontFamily="@font/inter_tight_medium"
                 android:text="Organized by"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -262,7 +261,7 @@
                             android:id="@+id/organizerName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/inter_tight_semibold"
+                            android:fontFamily="@font/inter_tight_medium"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             tools:text="Online Marketing" />
@@ -286,7 +285,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:fontFamily="@font/inter_tight_semibold"
+                android:fontFamily="@font/inter_tight_medium"
                 android:text="Donors"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -327,7 +326,7 @@
                         android:backgroundTint="#3D5AFE"
                         android:fontFamily="@font/inter_tight_medium"
                         android:text="View People"
-                        android:textAllCaps="false"
+                        android:textAllCaps="false"  
                         android:textColor="@color/white"
                         app:iconTint="@color/white" />
                 </LinearLayout>
@@ -340,7 +339,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
-                android:fontFamily="@font/inter_tight_semibold"
+                android:fontFamily="@font/inter_tight_medium"
                 android:text="Story behind this"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -349,6 +348,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
                 app:cardElevation="0dp"
                 android:background="#FFFFFF"
                 >
@@ -373,7 +373,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/inter_tight_semibold"
+                android:fontFamily="@font/inter_tight_medium"
                 android:text="Latest Updates"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -404,7 +404,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:fontFamily="@font/inter_tight_semibold"
+                android:fontFamily="@font/inter_tight_medium"
                 android:text="Use of Funds"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -463,6 +463,7 @@
             android:backgroundTint="#3D5AFE"
             android:fontFamily="@font/inter_tight_medium"
             android:text="Donate"
+            android:background="@drawable/button_rounded"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 

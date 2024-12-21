@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/card_background">
 
-        <!-- Image Section -->
         <FrameLayout
             android:id="@+id/imageContainer"
             android:layout_width="match_parent"
@@ -35,6 +34,7 @@
                 android:layout_margin="12dp"
                 android:background="@drawable/date_chip_background"
                 android:elevation="4dp"
+                android:fontFamily="@font/inter_tight_medium"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="6dp"
                 android:textColor="@color/black"
@@ -42,25 +42,25 @@
                 tools:text="17 Dec" />
         </FrameLayout>
 
-        <!-- Problem Details -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp"
+            android:padding="16dp"
+            app:cardCornerRadius="24dp"
             app:layout_constraintTop_toBottomOf="@id/imageContainer">
 
-            <!-- Maker Information -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/problemMaker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_tight"
                     android:textColor="#666666"
                     android:textSize="14sp"
                     tools:text="Arafi Laksmana" />
@@ -74,18 +74,18 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- Title of the Problem -->
             <TextView
                 android:id="@+id/problemTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_tight_medium"
+                android:lineHeight="24dp"
+                android:lineSpacingExtra="4dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
                 tools:text="DIMANAKAH DIA?! Setelah Viral dimanakah sosok gus mifta yang mengolok tukang es teh?" />
 
-            <!-- Donation Progress -->
             <ProgressBar
                 android:id="@+id/progress_bar"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
@@ -94,41 +94,54 @@
                 android:layout_marginTop="12dp"
                 android:progressTint="#006BFF" />
 
-            <TextView
-                android:id="@+id/donationText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="#666666"
-                android:textSize="14sp"
-                tools:text="Donations: Rp500K / Rp2M" />
-
-            <!-- Volunteer Statistics (as text) -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/iconPeople"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_people" />
-
+                <!-- Price Text -->
                 <TextView
-                    android:id="@+id/viewCount"
+                    android:id="@+id/priceText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_tight_medium"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="Rp696.969.696" />
+
+                <!-- LinearLayout for Icon People and View Count -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:textColor="#666666"
-                    android:textSize="14sp"
-                    tools:text="27/50" />
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <!-- Icon People -->
+                    <ImageView
+                        android:id="@+id/iconPeople"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_people"
+                         />
+
+                    <!-- Text 27/50 -->
+                    <TextView
+                        android:id="@+id/viewCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_tight"
+                        tools:text="27/50" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout> <!-- This closes the ConstraintLayout -->
+</androidx.cardview.widget.CardView> <!-- This closes the CardView -->

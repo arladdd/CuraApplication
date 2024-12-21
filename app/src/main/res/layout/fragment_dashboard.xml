@@ -48,14 +48,16 @@
             android:textColorHint="#9D9D9D"
             android:textSize="14sp" />
 
-        <!-- Notification Icon -->
+        <!-- History Section -->
         <ImageView
-            android:id="@+id/notification_icon"
+            android:id="@+id/history_icon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_notification"
-            android:contentDescription="Notification Icon"
-            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_history"
+            android:contentDescription="History Icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="16dp"/>
     </LinearLayout>
 
