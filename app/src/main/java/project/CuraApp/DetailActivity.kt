@@ -21,6 +21,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var remainDays: TextView
     private lateinit var organizerName: TextView
     private lateinit var storyText: TextView
+    private lateinit var progressBar: ProgressBar
 
 
     private val coroutineScope = CoroutineScope(Dispatchers.Main + Job())
@@ -37,6 +38,8 @@ class DetailActivity : AppCompatActivity() {
         remainDays = findViewById(R.id.remainDays)
         organizerName = findViewById(R.id.organizerName)
         storyText = findViewById(R.id.storyText)
+        progressBar = findViewById(R.id.progressBar)
+
 
         val problemId = intent.getStringExtra("PROBLEM_ID")
         if (problemId.isNullOrEmpty()) {
@@ -52,7 +55,6 @@ class DetailActivity : AppCompatActivity() {
 
 
     private fun fetchProblemDetails(problemId: String) {
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         // Use coroutine scope to handle the API request asynchronously
         coroutineScope.launch {
             try {
@@ -71,8 +73,6 @@ class DetailActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 e.printStackTrace()
                 Toast.makeText(this@DetailActivity, "Network error!", Toast.LENGTH_SHORT).show()
-            } finally {
-                progressBar.visibility = View.GONE
             }
         }
     }
@@ -90,6 +90,8 @@ class DetailActivity : AppCompatActivity() {
         participantCount.text = "${problem.volunteerReceived ?: 0} participants"
         organizerName.text = problem.user?.name ?: "Anonymous"
         storyText.text = problem.description ?: "No description available"
+        progressBar.progress = problem.donationPercentage()
+
     }
 
     override fun onDestroy() {
