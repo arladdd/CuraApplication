@@ -40,11 +40,11 @@ class MainActivity : AppCompatActivity() {
                     lastFragmentId = item.itemId
                     true
                 }
-                R.id.navigation_complete -> {
-                    loadFragment(CompleteFragment())
-                    lastFragmentId = item.itemId
-                    true
-                }
+//                R.id.navigation_complete -> {
+//                    loadFragment(CompleteFragment())
+//                    lastFragmentId = item.itemId
+//                    true
+//                }
                 R.id.navigation_add_report -> {
                     startActivity(Intent(this, ReportActivity::class.java))
                     false
